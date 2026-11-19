@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Licitaciones | Panel de Control del Usuario</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-group" id="logoHomeBtn" title="Volver al Dashboard Principal">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18"></path>
+            <path d="M5 21V7l7-4 7 4v14"></path>
+            <path d="M9 21v-6h6v6"></path>
+            <path d="M9 9h.01"></path>
+            <path d="M15 9h.01"></path>
+            <path d="M9 13h.01"></path>
+            <path d="M15 13h.01"></path>
+          </svg>
+        </div>
+        <div class="brand-title">
+          <h1>Sistema Electrónico de Contrataciones Públicas</h1>
+          <span>Dirección General de Adquisiciones · Portal de Usuario</span>
+        </div>
+      </div>
+
+      <div class="user-controls">
+        <div class="user-pill">
+          <span class="status-dot"></span>
+          <span>RFC: <strong>GOME850412H91</strong></span>
+        </div>
+        <a href="index.html" class="btn-logout">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span>Cerrar Sesión</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <!-- RUTA DE NAVEGACIÓN (BREADCRUMB) -->
+    <nav class="breadcrumb-bar" aria-label="Ruta de navegación">
+      <span id="crumbRoot" class="breadcrumb-link">Dashboard Principal</span>
+      <span id="crumbSeparator" class="hidden">/</span>
+      <span id="crumbCurrent" class="breadcrumb-current hidden"></span>
+    </nav>
+
+    <!-- ====================================================================
+         VISTA 0: MOSTRAR DASHBOARD USUARIO
+         ==================================================================== -->
+    <section id="view-dashboard" class="view-section active">
+      <div class="page-header">
+        <div>
+          <span class="badge-official">Sesión Activa · Padrón Único de Proveedores</span>
+          <h2>Panel de Control y Operaciones</h2>
+          <p>Seleccione el módulo operativo que desea consultar o ejecutar en el sistema.</p>
+        </div>
+      </div>
+
+      <!-- Indicadores Ejecutivos -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-label">Convocatorias Vigentes</span>
+          <span class="kpi-value">128</span>
+          <span class="kpi-meta neutral">Actualizado hoy · 09:00 hrs</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Contratos Auditados</span>
+          <span class="kpi-value">6</span>
+          <span class="kpi-meta positive">Disponibles para descarga</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Alertas de Sobrecosto</span>
+          <span class="kpi-value">2</span>
+          <span class="kpi-meta warning">Requieren revisión comparativa</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Ahorro Promedio Detectado</span>
+          <span class="kpi-value">-6.4%</span>
+          <span class="kpi-meta positive">Respecto a precio de mercado</span>
+        </div>
+      </div>
+
+      <!-- Tres Ramas del Diagrama de Flujo -->
+      <div class="modules-grid">
+        <!-- Rama 1 -->
+        <article class="module-card">
+          <div class="module-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3>Búsqueda y Filtrado</h3>
+          <p>Consulte procedimientos de licitación pública, ingrese criterios específicos por dependencia, monto o folio y analice los resultados obtenidos.</p>
+          <button type="button" class="btn btn-primary" onclick="navigateTo('search')">
+            <span>Seleccionar “Búsqueda y filtrado”</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </article>
+
+        <!-- Rama 2 -->
+        <article class="module-card">
+          <div class="module-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3>Reporte y Comparación de Precios</h3>
+          <p>Evalúe detalles de compra frente a referencias de mercado, calcule automáticamente diferencias de costos y visualice alertas de desviación.</p>
+          <button type="button" class="btn btn-primary" onclick="navigateTo('report')">
+            <span>Seleccionar un reporte de búsquedas</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </article>
+
+        <!-- Rama 3 -->
+        <article class="module-card">
+          <div class="module-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <h3>Descarga de Listado de Contratos</h3>
+          <p>Genere y exporte el padrón consolidado de contratos adjudicados y vigentes mediante solicitud directa al servidor institucional.</p>
+          <button type="button" class="btn btn-primary" onclick="navigateTo('download')">
+            <span>Solicitar descarga de listado</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VISTA 1: BÚSQUEDA Y FILTRADO
+         ==================================================================== -->
+    <section id="view-search" class="view-section">
+      <div class="page-header">
+        <div>
+          <span class="badge-official">Módulo 01 · Consulta Oficial</span>
+          <h2>Búsqueda y Filtrado de Licitaciones</h2>
+          <p>Ingrese los criterios de búsqueda para consultar los procedimientos registrados.</p>
+        </div>
+      </div>
+
+      <!-- Indicador de pasos del flujo -->
+      <div class="flow-steps">
+        <div class="step-pill done">1. Vista de búsqueda cargada</div>
+        <div class="step-pill active" id="stepSearchCriteria">2. Ingresar criterios y búsquedas</div>
+        <div class="step-pill" id="stepSearchProcess">3. Procesar búsqueda</div>
+        <div class="step-pill" id="stepSearchResults">4. Mostrar resultados</div>
+      </div>
+
+      <!-- Formulario de Criterios -->
+      <div class="card-panel">
+        <div class="card-panel-header">
+          <h3>Criterios de Filtrado</h3>
+          <span class="panel-hint">Complete uno o más campos para refinar</span>
+        </div>
+        <div class="card-panel-body">
+          <form id="searchForm">
+            <div class="filter-grid">
+              <div class="form-group">
+                <label for="filterKeyword" class="form-label">Folio o Palabra Clave</label>
+                <input type="text" id="filterKeyword" class="form-control" placeholder="Ej. LA-012-2026, equipo médico, obra...">
+              </div>
+              <div class="form-group">
+                <label for="filterAgency" class="form-label">Dependencia / Entidad</label>
+                <select id="filterAgency" class="form-control">
+                  <option value="">Todas las dependencias</option>
+                  <option value="Secretaría de Salud">Secretaría de Salud</option>
+                  <option value="Secretaría de Infraestructura">Secretaría de Infraestructura</option>
+                  <option value="Comisión Federal de Energía">Comisión Federal de Energía</option>
+                  <option value="Secretaría de Educación">Secretaría de Educación</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="filterType" class="form-label">Tipo de Procedimiento</label>
+                <select id="filterType" class="form-control">
+                  <option value="">Todos los procedimientos</option>
+                  <option value="Licitación Pública Nacional">Licitación Pública Nacional</option>
+                  <option value="Licitación Pública Internacional">Licitación Pública Internacional</option>
+                  <option value="Invitación a Cuando Menos Tres">Invitación a Cuando Menos Tres</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="filterStatus" class="form-label">Estatus del Proceso</label>
+                <select id="filterStatus" class="form-control">
+                  <option value="">Todos los estatus</option>
+                  <option value="Vigente">Vigente</option>
+                  <option value="En Evaluación">En Evaluación</option>
+                  <option value="Adjudicado">Adjudicado</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="filter-actions">
+              <button type="button" class="btn btn-secondary" id="resetSearchBtn">Limpiar Criterios</button>
+              <button type="submit" class="btn btn-primary" id="processSearchBtn">
+                <span class="spinner"></span>
+                <svg class="btn-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span class="btn-text">Procesar Búsqueda</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tabla de Resultados -->
+      <div class="card-panel" id="searchResultsPanel">
+        <div class="card-panel-header">
+          <h3>Resultados de Búsqueda (<span id="resultsCount">6</span> procedimientos encontrados)</h3>
+          <span class="panel-hint">Seleccione “Comparar Precios” para auditar costos</span>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Folio Oficial</th>
+                <th>Objeto de la Contratación</th>
+                <th>Dependencia</th>
+                <th>Monto Propuesto</th>
+                <th>Estatus</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="resultsTableBody">
+              <!-- Se llena dinámicamente con JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Decisión: ¿Regresar al dashboard? -->
+      <div class="return-decision-bar">
+        <div class="decision-question">
+          <div class="diamond-badge"><span>?</span></div>
+          <div>
+            <strong>¿Regresar al dashboard?</strong>
+            <span>Puede volver al panel principal o continuar auditando resultados.</span>
+          </div>
+        </div>
+        <div class="decision-actions">
+          <button type="button" class="btn btn-secondary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">No, permanecer aquí</button>
+          <button type="button" class="btn btn-primary" onclick="navigateTo('dashboard')">Sí, regresar al Dashboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VISTA 2: REPORTE DE BÚSQUEDAS Y COMPARACIÓN DE PRECIOS
+         ==================================================================== -->
+    <section id="view-report" class="view-section">
+      <div class="page-header">
+        <div>
+          <span class="badge-official">Módulo 02 · Auditoría Económica</span>
+          <h2>Reporte Comparativo y Alerta Visual</h2>
+          <p>Cruce entre el monto de compra propuesto y los precios de referencia de mercado.</p>
+        </div>
+      </div>
+
+      <div class="flow-steps">
+        <div class="step-pill done">1. Reporte seleccionado</div>
+        <div class="step-pill done">2. Detalles de compra y mercado cargados</div>
+        <div class="step-pill done">3. Diferencias de costos calculadas</div>
+        <div class="step-pill active">4. Comparación y alerta visual</div>
+      </div>
+
+      <!-- Selector de Licitación a Analizar -->
+      <div class="card-panel">
+        <div class="card-panel-header">
+          <h3>Selección de Procedimiento Auditado</h3>
+          <span class="panel-hint" id="reportFolioTag">Folio: LA-012-2026-SALUD</span>
+        </div>
+        <div class="card-panel-body">
+          <div class="report-selector-row">
+            <div class="form-group">
+              <label for="reportSelect" class="form-label">Procedimiento / Licitación a evaluar</label>
+              <select id="reportSelect" class="form-control">
+                <!-- Opciones cargadas vía JS -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="simProposedInput" class="form-label">Monto Compra Propuesto (MXN)</label>
+              <input type="number" id="simProposedInput" class="form-control" step="1000">
+            </div>
+            <div class="form-group">
+              <label for="simMarketInput" class="form-label">Precio Referencia Mercado (MXN)</label>
+              <input type="number" id="simMarketInput" class="form-control" step="1000">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparación y Alerta Visual -->
+      <div class="comparison-grid">
+        <!-- Detalles y Gráfica Comparativa -->
+        <div class="card-panel no-margin">
+          <div class="card-panel-header">
+            <h3>Cálculo de Diferencias de Costos</h3>
+            <span class="panel-hint">Valores en Pesos Mexicanos (MXN)</span>
+          </div>
+          <div class="card-panel-body">
+            <p id="reportDescription" class="report-desc"></p>
+
+            <div class="cost-metrics">
+              <div class="metric-box">
+                <span class="metric-title">Monto de Compra</span>
+                <span class="metric-number" id="displayProposed">$0.00</span>
+              </div>
+              <div class="metric-box">
+                <span class="metric-title">Precio de Mercado</span>
+                <span class="metric-number" id="displayMarket">$0.00</span>
+              </div>
+              <div class="metric-box highlight">
+                <span class="metric-title">Diferencia Neta</span>
+                <span class="metric-number" id="displayDiff">$0.00</span>
+              </div>
+            </div>
+
+            <!-- Barras visuales comparativas -->
+            <div class="visual-bars">
+              <div class="bar-row">
+                <div class="bar-label">
+                  <span>Oferta / Compra Analizada</span>
+                  <strong id="barProposedPct">100%</strong>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill proposed" id="barProposedFill" style="width: 80%;"></div>
+                </div>
+              </div>
+
+              <div class="bar-row">
+                <div class="bar-label">
+                  <span>Referencia Promedio de Mercado</span>
+                  <strong id="barMarketPct">100%</strong>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill market" id="barMarketFill" style="width: 75%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta de Alerta Visual -->
+        <div id="visualAlertCard" class="alert-visual-card alert-danger">
+          <div class="alert-visual-header">
+            <div class="alert-icon-circle" id="alertIconCircle">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div>
+              <span class="alert-tag" id="alertTag">ALERTA VISUAL DE SOBRECOSTO</span>
+              <h3 id="alertTitle">Desviación Crítica Detectada</h3>
+            </div>
+          </div>
+
+          <div class="alert-percentage" id="alertPercentage">+14.8%</div>
+          <p class="alert-explanation" id="alertExplanation">
+            El monto de compra supera significativamente el precio de referencia de mercado. Se recomienda solicitar justificación técnica o dictamen de investigación de mercado.
+          </p>
+
+          <div class="alert-meta-list">
+            <div><span>Dependencia:</span> <strong id="alertAgency">-</strong></div>
+            <div><span>Procedimiento:</span> <strong id="alertType">-</strong></div>
+            <div><span>Dictamen Automático:</span> <strong id="alertVerdict">Requiere Revisión</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decisión: ¿Regresar al dashboard? -->
+      <div class="return-decision-bar">
+        <div class="decision-question">
+          <div class="diamond-badge"><span>?</span></div>
+          <div>
+            <strong>¿Regresar al dashboard?</strong>
+            <span>Puede volver al menú principal o seleccionar otro reporte para comparar.</span>
+          </div>
+        </div>
+        <div class="decision-actions">
+          <button type="button" class="btn btn-secondary" onclick="navigateTo('search')">Volver a Búsqueda</button>
+          <button type="button" class="btn btn-primary" onclick="navigateTo('dashboard')">Sí, regresar al Dashboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VISTA 3: DESCARGA DE LISTADO DE CONTRATOS
+         ==================================================================== -->
+    <section id="view-download" class="view-section">
+      <div class="page-header">
+        <div>
+          <span class="badge-official">Módulo 03 · Exportación de Datos</span>
+          <h2>Descarga de Listado de Contratos</h2>
+          <p>Solicite al servidor institucional la generación y envío del padrón oficial de contratos.</p>
+        </div>
+      </div>
+
+      <div class="card-panel">
+        <div class="card-panel-header">
+          <h3>Configuración de Solicitud al Servidor</h3>
+          <span class="panel-hint">Formato oficial con sello de tiempo</span>
+        </div>
+        <div class="card-panel-body">
+          <div class="filter-grid">
+            <div class="form-group">
+              <label for="dlPeriod" class="form-label">Ejercicio Fiscal</label>
+              <select id="dlPeriod" class="form-control">
+                <option value="2026">Ejercicio Fiscal 2026 (Actual)</option>
+                <option value="2025">Ejercicio Fiscal 2025 (Cerrado)</option>
+                <option value="Todos">Histórico Consolidado 2025 - 2026</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="dlScope" class="form-label">Alcance del Listado</label>
+              <select id="dlScope" class="form-control">
+                <option value="Todos">Todos los contratos registrados (6 registros)</option>
+                <option value="Adjudicado">Solo contratos adjudicados</option>
+                <option value="Vigente">Solo convocatorias vigentes</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="dlFormat" class="form-label">Formato de Archivo</label>
+              <select id="dlFormat" class="form-control">
+                <option value="csv">CSV (Valores separados por comas - Excel)</option>
+                <option value="txt">TXT (Reporte estructurado de texto)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Monitor de Estado del Flujo Servidor -> Navegador -->
+          <div class="server-pipeline" id="serverPipeline">
+            <div class="pipeline-step" id="pipeStep1">
+              <div class="pipe-indicator">1</div>
+              <div class="pipe-text">
+                <strong>Enviar solicitud de archivo al servidor</strong>
+                <span>Petición HTTPS autenticado con token de sesión</span>
+              </div>
+            </div>
+            <div class="pipeline-step" id="pipeStep2">
+              <div class="pipe-indicator">2</div>
+              <div class="pipe-text">
+                <strong>Servidor genera y envía el archivo</strong>
+                <span>Compilación de registros y validación de integridad</span>
+              </div>
+            </div>
+            <div class="pipeline-step" id="pipeStep3">
+              <div class="pipe-indicator">3</div>
+              <div class="pipe-text">
+                <strong>Navegador inicia la descarga</strong>
+                <span>Transferencia directa al equipo del usuario</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="downloadSuccessBanner" class="download-success-banner hidden">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span id="downloadSuccessMsg">Archivo generado y descargado correctamente en su navegador.</span>
+          </div>
+
+          <div class="filter-actions mt-1">
+            <button type="button" class="btn btn-primary" id="startDownloadBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Solicitar Descarga de Listado de Contratos</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decisión: ¿Regresar al dashboard? -->
+      <div class="return-decision-bar">
+        <div class="decision-question">
+          <div class="diamond-badge"><span>?</span></div>
+          <div>
+            <strong>¿Regresar al dashboard?</strong>
+            <span>El archivo ya fue procesado. Puede volver al panel principal.</span>
+          </div>
+        </div>
+        <div class="decision-actions">
+          <button type="button" class="btn btn-secondary" onclick="resetPipeline()">Preparar otra descarga</button>
+          <button type="button" class="btn btn-primary" onclick="navigateTo('dashboard')">Sí, regresar al Dashboard</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="app-footer-inner">
+      <span>© 2026 Sistema Electrónico de Contrataciones Públicas · Mesa de Ayuda: 800-000-LICITA (5424)</span>
+      <span>Conexión Segura TLS 1.3 · ISO/IEC 27001</span>
+    </div>
+  </footer>
+
+  <!-- Lógica de Navegación, Búsqueda, Comparación y Descarga -->
+  <script>
+    const contractsData = [
+      {
+        id: 1,
+        folio: 'LA-012-2026-SALUD',
+        title: 'Adquisición de Equipo de Diagnóstico por Imagen de Alta Especialidad',
+        agency: 'Secretaría de Salud',
+        type: 'Licitación Pública Internacional',
+        status: 'En Evaluación',
+        date: '2026-11-10',
+        proposedPrice: 4850000,
+        marketPrice: 4220000
+      },
+      {
+        id: 2,
+        folio: 'LO-009-2026-INFRA',
+        title: 'Rehabilitación de Tramo Carretero y Señalización Vial Zona Norte',
+        agency: 'Secretaría de Infraestructura',
+        type: 'Licitación Pública Nacional',
+        status: 'Adjudicado',
+        date: '2026-10-28',
+        proposedPrice: 11200000,
+        marketPrice: 12150000
+      },
+      {
+        id: 3,
+        folio: 'LA-044-2026-CFE',
+        title: 'Suministro de Transformadores de Distribución Trifásicos',
+        agency: 'Comisión Federal de Energía',
+        type: 'Licitación Pública Nacional',
+        status: 'Vigente',
+        date: '2026-11-15',
+        proposedPrice: 6780000,
+        marketPrice: 6590000
+      },
+      {
+        id: 4,
+        folio: 'IA-018-2026-EDU',
+        title: 'Equipamiento de Aulas Digitales y Servidores Escolares',
+        agency: 'Secretaría de Educación',
+        type: 'Invitación a Cuando Menos Tres',
+        status: 'Adjudicado',
+        date: '2026-10-14',
+        proposedPrice: 2340000,
+        marketPrice: 2510000
+      },
+      {
+        id: 5,
+        folio: 'LA-051-2026-SALUD',
+        title: 'Suministro Consolidado de Material de Curación e Insumos Quirúrgicos',
+        agency: 'Secretaría de Salud',
+        type: 'Licitación Pública Nacional',
+        status: 'En Evaluación',
+        date: '2026-11-17',
+        proposedPrice: 3920000,
+        marketPrice: 3350000
+      },
+      {
+        id: 6,
+        folio: 'LO-023-2026-INFRA',
+        title: 'Modernización de Red Hidráulica y Planta de Bombeo Municipal',
+        agency: 'Secretaría de Infraestructura',
+        type: 'Licitación Pública Nacional',
+        status: 'Vigente',
+        date: '2026-11-18',
+        proposedPrice: 8900000,
+        marketPrice: 9100000
+      }
+    ];
+
+    const views = {
+      dashboard: document.getElementById('view-dashboard'),
+      search: document.getElementById('view-search'),
+      report: document.getElementById('view-report'),
+      download: document.getElementById('view-download')
+    };
+
+    const viewNames = {
+      search: 'Búsqueda y Filtrado',
+      report: 'Reporte y Comparación de Precios',
+      download: 'Descarga de Listado de Contratos'
+    };
+
+    const crumbRoot = document.getElementById('crumbRoot');
+    const crumbSeparator = document.getElementById('crumbSeparator');
+    const crumbCurrent = document.getElementById('crumbCurrent');
+
+    function navigateTo(viewKey, selectedContractId = null) {
+      Object.values(views).forEach(el => el.classList.remove('active'));
+      views[viewKey].classList.add('active');
+
+      if (viewKey === 'dashboard') {
+        crumbSeparator.classList.add('hidden');
+        crumbCurrent.classList.add('hidden');
+      } else {
+        crumbSeparator.classList.remove('hidden');
+        crumbCurrent.classList.remove('hidden');
+        crumbCurrent.textContent = viewNames[viewKey];
+      }
+
+      if (viewKey === 'search') {
+        renderSearchTable(contractsData);
+      }
+
+      if (viewKey === 'report') {
+        const targetId = selectedContractId || Number(document.getElementById('reportSelect').value) || contractsData[0].id;
+        loadReportComparison(targetId);
+      }
+
+      if (viewKey === 'download') {
+        resetPipeline();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    crumbRoot.addEventListener('click', () => navigateTo('dashboard'));
+    document.getElementById('logoHomeBtn').addEventListener('click', () => navigateTo('dashboard'));
+
+    const formatCurrency = (val) => {
+      return new Intl.NumberFormat('es-MX', {
+        style: 'currency',
+        currency: 'MXN',
+        minimumFractionDigits: 2
+      }).format(val);
+    };
+
+    const resultsTableBody = document.getElementById('resultsTableBody');
+    const resultsCount = document.getElementById('resultsCount');
+
+    function getStatusBadgeClass(status) {
+      if (status === 'Vigente') return 'badge-vigente';
+      if (status === 'Adjudicado') return 'badge-adjudicado';
+      return 'badge-evaluacion';
+    }
+
+    function renderSearchTable(items) {
+      resultsCount.textContent = items.length;
+      if (items.length === 0) {
+        resultsTableBody.innerHTML = `
+          <tr>
+            <td colspan="6" class="empty-table-cell">
+              No se encontraron procedimientos que coincidan con los criterios ingresados.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      resultsTableBody.innerHTML = items.map(item => `
+        <tr>
+          <td><strong>${item.folio}</strong></td>
+          <td>${item.title}</td>
+          <td>${item.agency}</td>
+          <td><strong>${formatCurrency(item.proposedPrice)}</strong></td>
+          <td><span class="status-badge ${getStatusBadgeClass(item.status)}">${item.status}</span></td>
+          <td>
+            <button type="button" class="btn-table-action" onclick="navigateTo('report', ${item.id})">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span>Comparar Precios</span>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    const searchForm = document.getElementById('searchForm');
+    const processSearchBtn = document.getElementById('processSearchBtn');
+
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('stepSearchCriteria').className = 'step-pill done';
+      document.getElementById('stepSearchProcess').className = 'step-pill active';
+      processSearchBtn.classList.add('loading');
+      processSearchBtn.disabled = true;
+
+      setTimeout(() => {
+        const keyword = document.getElementById('filterKeyword').value.trim().toLowerCase();
+        const agency = document.getElementById('filterAgency').value;
+        const type = document.getElementById('filterType').value;
+        const status = document.getElementById('filterStatus').value;
+
+        const filtered = contractsData.filter(item => {
+          const matchKeyword = !keyword ||
+            item.folio.toLowerCase().includes(keyword) ||
+            item.title.toLowerCase().includes(keyword);
+          const matchAgency = !agency || item.agency === agency;
+          const matchType = !type || item.type === type;
+          const matchStatus = !status || item.status === status;
+          return matchKeyword && matchAgency && matchType && matchStatus;
+        });
+
+        renderSearchTable(filtered);
+        processSearchBtn.classList.remove('loading');
+        processSearchBtn.disabled = false;
+        document.getElementById('stepSearchProcess').className = 'step-pill done';
+        document.getElementById('stepSearchResults').className = 'step-pill active';
+      }, 500);
+    });
+
+    document.getElementById('resetSearchBtn').addEventListener('click', () => {
+      searchForm.reset();
+      document.getElementById('stepSearchCriteria').className = 'step-pill active';
+      document.getElementById('stepSearchProcess').className = 'step-pill';
+      document.getElementById('stepSearchResults').className = 'step-pill';
+      renderSearchTable(contractsData);
+    });
+
+    const reportSelect = document.getElementById('reportSelect');
+    const simProposedInput = document.getElementById('simProposedInput');
+    const simMarketInput = document.getElementById('simMarketInput');
+
+    contractsData.forEach(item => {
+      const opt = document.createElement('option');
+      opt.value = item.id;
+      opt.textContent = `${item.folio} — ${item.title}`;
+      reportSelect.appendChild(opt);
+    });
+
+    function loadReportComparison(contractId) {
+      const item = contractsData.find(c => c.id === Number(contractId)) || contractsData[0];
+      reportSelect.value = item.id;
+      document.getElementById('reportFolioTag').textContent = `Folio: ${item.folio}`;
+      document.getElementById('reportDescription').textContent = item.title;
+      document.getElementById('alertAgency').textContent = item.agency;
+      document.getElementById('alertType').textContent = item.type;
+
+      simProposedInput.value = item.proposedPrice;
+      simMarketInput.value = item.marketPrice;
+      recalculateCostComparison();
+    }
+
+    function recalculateCostComparison() {
+      const proposed = parseFloat(simProposedInput.value) || 0;
+      const market = parseFloat(simMarketInput.value) || 1;
+      const diff = proposed - market;
+      const pct = ((diff / market) * 100);
+
+      document.getElementById('displayProposed').textContent = formatCurrency(proposed);
+      document.getElementById('displayMarket').textContent = formatCurrency(market);
+
+      const sign = diff > 0 ? '+' : '';
+      document.getElementById('displayDiff').textContent = `${sign}${formatCurrency(diff)}`;
+
+      const maxVal = Math.max(proposed, market, 1);
+      const propWidth = Math.min(100, Math.round((proposed / maxVal) * 100));
+      const mktWidth = Math.min(100, Math.round((market / maxVal) * 100));
+
+      document.getElementById('barProposedFill').style.width = `${propWidth}%`;
+      document.getElementById('barMarketFill').style.width = `${mktWidth}%`;
+      document.getElementById('barProposedPct').textContent = `${((proposed / market) * 100).toFixed(1)}% del ref.`;
+      document.getElementById('barMarketPct').textContent = '100% (Base)';
+
+      const card = document.getElementById('visualAlertCard');
+      const tag = document.getElementById('alertTag');
+      const title = document.getElementById('alertTitle');
+      const pctEl = document.getElementById('alertPercentage');
+      const exp = document.getElementById('alertExplanation');
+      const verdict = document.getElementById('alertVerdict');
+
+      pctEl.textContent = `${sign}${pct.toFixed(1)}%`;
+
+      if (pct > 5) {
+        card.className = 'alert-visual-card alert-danger';
+        tag.textContent = 'ALERTA ROJA · SOBRECOSTO DETECTADO';
+        title.textContent = 'Desviación Superior al Umbral (+5%)';
+        exp.textContent = 'El precio propuesto excede el parámetro de referencia de mercado. Se activa alerta preventiva para revisión del comité de adquisiciones.';
+        verdict.textContent = 'Sobrecosto — Requiere Justificación';
+      } else if (pct > 0) {
+        card.className = 'alert-visual-card alert-warning';
+        tag.textContent = 'ALERTA PREVENTIVA · VARIACIÓN LEVE';
+        title.textContent = 'Dentro de Margen Tolerable (0% a +5%)';
+        exp.textContent = 'El monto se encuentra ligeramente por encima del promedio histórico, pero dentro del rango aceptable por actualización inflacionaria.';
+        verdict.textContent = 'Tolerable — Validación Estándar';
+      } else {
+        card.className = 'alert-visual-card alert-ok';
+        tag.textContent = 'DICTAMEN FAVORABLE · AHORRO';
+        title.textContent = 'Precio Competitivo Bajo Mercado';
+        exp.textContent = 'La propuesta representa un ahorro directo para la dependencia respecto al estudio de mercado vigente.';
+        verdict.textContent = 'Favorable — Ahorro Confirmado';
+      }
+    }
+
+    reportSelect.addEventListener('change', (e) => loadReportComparison(e.target.value));
+    simProposedInput.addEventListener('input', recalculateCostComparison);
+    simMarketInput.addEventListener('input', recalculateCostComparison);
+
+    const startDownloadBtn = document.getElementById('startDownloadBtn');
+    const pipeStep1 = document.getElementById('pipeStep1');
+    const pipeStep2 = document.getElementById('pipeStep2');
+    const pipeStep3 = document.getElementById('pipeStep3');
+    const downloadSuccessBanner = document.getElementById('downloadSuccessBanner');
+
+    function resetPipeline() {
+      pipeStep1.className = 'pipeline-step';
+      pipeStep2.className = 'pipeline-step';
+      pipeStep3.className = 'pipeline-step';
+      downloadSuccessBanner.classList.add('hidden');
+      startDownloadBtn.disabled = false;
+    }
+
+    startDownloadBtn.addEventListener('click', () => {
+      resetPipeline();
+      startDownloadBtn.disabled = true;
+
+      pipeStep1.classList.add('running');
+
+      setTimeout(() => {
+        pipeStep1.classList.remove('running');
+        pipeStep1.classList.add('completed');
+        pipeStep2.classList.add('running');
+      }, 650);
+
+      setTimeout(() => {
+        pipeStep2.classList.remove('running');
+        pipeStep2.classList.add('completed');
+        pipeStep3.classList.add('running');
+      }, 1400);
+
+      setTimeout(() => {
+        pipeStep3.classList.remove('running');
+        pipeStep3.classList.add('completed');
+        triggerFileDownload();
+        startDownloadBtn.disabled = false;
+      }, 2100);
+    });
+
+    function triggerFileDownload() {
+      const scope = document.getElementById('dlScope').value;
+      const format = document.getElementById('dlFormat').value;
+      const period = document.getElementById('dlPeriod').value;
+
+      const rows = scope === 'Todos'
+        ? contractsData
+        : contractsData.filter(c => c.status === scope);
+
+      let content = '';
+      let mimeType = 'text/csv;charset=utf-8;';
+      let filename = `Listado_Contratos_${period}.${format}`;
+
+      if (format === 'csv') {
+        const headers = ['Folio', 'Objeto de Contratacion', 'Dependencia', 'Tipo Procedimiento', 'Estatus', 'Fecha', 'Monto Propuesto MXN', 'Precio Mercado MXN'];
+        const csvLines = rows.map(r =>
+          `"${r.folio}","${r.title}","${r.agency}","${r.type}","${r.status}","${r.date}",${r.proposedPrice},${r.marketPrice}`
+        );
+        content = '\uFEFF' + [headers.join(','), ...csvLines].join('\n');
+      } else {
+        mimeType = 'text/plain;charset=utf-8;';
+        content = `SISTEMA ELECTRÓNICO DE CONTRATACIONES PÚBLICAS\nREPORTE OFICIAL DE CONTRATOS (${period})\nGenerado: ${new Date().toLocaleString('es-MX')}\n====================================================================\n\n` +
+          rows.map(r =>
+            `Folio: ${r.folio}\nObjeto: ${r.title}\nDependencia: ${r.agency}\nEstatus: ${r.status}\nMonto Propuesto: ${formatCurrency(r.proposedPrice)} | Mercado: ${formatCurrency(r.marketPrice)}\n--------------------------------------------------------------------`
+          ).join('\n');
+      }
+
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      document.getElementById('downloadSuccessMsg').textContent =
+        `Descarga iniciada: "${filename}" (${rows.length} contratos exportados).`;
+      downloadSuccessBanner.classList.remove('hidden');
+    }
+
+    renderSearchTable(contractsData);
+  </script>
+</body>
+</html>

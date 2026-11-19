@@ -1,207 +1,651 @@
+/* ==========================================================================
+   VARIABLES DE DISEÑO (Personaliza aquí colores y tipografía)
+   ========================================================================== */
+:root {
+  --navy-900: #0A1D30;
+  --navy-800: #0F2942;
+  --navy-700: #163A5F;
+  --navy-600: #1E4E7E;
+  --accent-gold: #B48A3E;
+  --slate-900: #0F172A;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748B;
+  --slate-300: #CBD5E1;
+  --slate-200: #E2E8F0;
+  --slate-100: #F1F5F9;
+  --slate-50:  #F8FAFC;
+  --white:     #FFFFFF;
+  --error-bg:  #FEF2F2;
+  --error-text:#B91C1C;
+  --error-border:#FCA5A5;
+  --success-bg:#F0FDF4;
+  --success-text:#15803D;
+  --success-border:#86EFAC;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   RESET Y ESTILOS BASE
+   ========================================================================== */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f3f5f9;
-  color: #243047;
-  line-height: 1.5;
-}
-
-.contenedor {
-  width: min(1100px, 92%);
-  margin: 0 auto;
-}
-
-.encabezado {
-  background: #183153;
-  color: white;
-  padding: 24px 0;
-}
-
-.encabezado h1 {
-  margin: 0;
-  font-size: 28px;
-}
-
-.encabezado p {
-  margin: 5px 0 0;
-  color: #d9e4f2;
-}
-
-.contenido {
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 24px;
-  padding-top: 28px;
-  padding-bottom: 40px;
-}
-
-.panel {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 3px 14px #15274412;
-  min-width: 0;
-}
-
-h2 {
-  font-size: 21px;
-  margin-top: 0;
-}
-
-label {
-  display: block;
-  margin-top: 14px;
-  margin-bottom: 6px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-input,
-textarea {
-  width: 100%;
-  padding: 11px;
-  border: 1px solid #cbd3df;
-  border-radius: 7px;
-  font: inherit;
-}
-
-textarea {
-  min-height: 85px;
-  resize: vertical;
-}
-
-input:focus,
-textarea:focus {
-  outline: 2px solid #8cb8f3;
-  border-color: #2766b1;
-}
-
-.campos-dobles {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.acciones-formulario,
-.encabezado-lista,
-.acciones-producto {
+  font-family: var(--font-family);
+  background-color: var(--slate-100);
+  color: var(--slate-900);
+  min-height: 100vh;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   CONTENEDOR PRINCIPAL (SPLIT-SCREEN)
+   ========================================================================== */
+.login-container {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ==========================================================================
+   PANEL IZQUIERDO: IDENTIDAD INSTITUCIONAL
+   ========================================================================== */
+.brand-panel {
+  flex: 1.05;
+  background: linear-gradient(155deg, var(--navy-900) 0%, var(--navy-800) 55%, var(--navy-700) 100%);
+  color: var(--white);
+  padding: 3.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.brand-header {
+  position: relative;
+  z-index: 1;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-text h1 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+.logo-text span {
+  font-size: 0.8125rem;
+  color: var(--slate-300);
+  font-weight: 400;
+}
+
+.brand-headline {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+  max-width: 520px;
+  letter-spacing: -0.02em;
+}
+
+.brand-description {
+  font-size: 1rem;
+  color: var(--slate-300);
+  max-width: 500px;
+  margin-bottom: 2.5rem;
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+  max-width: 480px;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  font-size: 0.9375rem;
+  color: var(--slate-200);
+}
+
+.feature-list svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #60A5FA;
+}
+
+.brand-footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 1.5rem;
+  font-size: 0.8125rem;
+  color: var(--slate-300);
+}
+
+.security-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #E2E8F0;
+}
+
+/* ==========================================================================
+   PANEL DERECHO: FORMULARIO DE ACCESO
+   ========================================================================== */
+.form-panel {
+  flex: 1;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 2rem;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 430px;
+}
+
+.form-header {
+  margin-bottom: 1.75rem;
+}
+
+.badge-official {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--navy-800);
+  background-color: var(--slate-100);
+  border: 1px solid var(--slate-200);
+  padding: 0.25rem 0.625rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.form-header h2 {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  letter-spacing: -0.015em;
+  margin-bottom: 0.375rem;
+}
+
+.form-header p {
+  font-size: 0.9375rem;
+  color: var(--slate-600);
+}
+
+/* ==========================================================================
+   ALERTAS Y MENSAJES DE VALIDACIÓN
+   ========================================================================== */
+.alert-box {
+  display: none;
+  padding: 0.875rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+  align-items: flex-start;
+  gap: 0.625rem;
+  border: 1px solid transparent;
+}
+
+.alert-box.error {
+  display: flex;
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  border-color: var(--error-border);
+}
+
+.alert-box.success {
+  display: flex;
+  background-color: var(--success-bg);
+  color: var(--success-text);
+  border-color: var(--success-border);
+}
+
+.alert-box svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   CAMPOS DE FORMULARIO E INPUTS
+   ========================================================================== */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--slate-700);
+  margin-bottom: 0.45rem;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.875rem;
+  color: var(--slate-500);
+  pointer-events: none;
+  display: flex;
+}
+
+.form-control {
+  width: 100%;
+  height: 44px;
+  padding: 0.625rem 2.75rem 0.625rem 2.625rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: var(--slate-900);
+  background-color: var(--white);
+  border: 1px solid var(--slate-300);
+  border-radius: 6px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control::placeholder {
+  color: var(--slate-500);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--navy-700);
+  box-shadow: 0 0 0 3px rgba(15, 41, 66, 0.12);
+}
+
+.form-control.is-invalid {
+  border-color: var(--error-text);
+  background-color: #FFFBFB;
+}
+
+.field-error {
+  display: none;
+  font-size: 0.78rem;
+  color: var(--error-text);
+  margin-top: 0.35rem;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--slate-500);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.15s ease;
+}
+
+.toggle-password:hover {
+  color: var(--slate-900);
+}
+
+/* ==========================================================================
+   OPCIONES DE SESIÓN Y BOTONES
+   ========================================================================== */
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--slate-700);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--navy-800);
+  cursor: pointer;
+}
+
+.forgot-link {
+  color: var(--navy-700);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+  color: var(--navy-900);
+}
+
+.btn {
+  width: 100%;
+  height: 46px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--navy-800);
+  color: var(--white);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--navy-900);
+}
+
+.btn-primary:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.375rem 0;
+  color: var(--slate-500);
+  font-size: 0.8125rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--slate-200);
+}
+
+.divider:not(:empty)::before {
+  margin-right: 0.75rem;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 0.75rem;
+}
+
+.btn-efirma {
+  background-color: var(--slate-50);
+  color: var(--slate-900);
+  border-color: var(--slate-300);
+}
+
+.btn-efirma:hover {
+  background-color: var(--slate-100);
+  border-color: var(--slate-500);
+}
+
+.register-prompt {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--slate-600);
+}
+
+.register-prompt a {
+  color: var(--navy-700);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-prompt a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   PIE DE PÁGINA DEL FORMULARIO
+   ========================================================================== */
+.form-footer {
+  margin-top: 2.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--slate-200);
+  font-size: 0.8125rem;
+  color: var(--slate-500);
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.support-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--slate-700);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-links a {
+  color: var(--slate-600);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--navy-800);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   MODAL PARA e.firma
+   ========================================================================== */
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 29, 48, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 50;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-backdrop.active {
+  display: flex;
+}
+
+.modal-card {
+  background: var(--white);
+  width: 100%;
+  max-width: 440px;
+  border-radius: 8px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  border: 1px solid var(--slate-200);
+}
+
+.modal-header {
+  background-color: var(--navy-800);
+  color: var(--white);
+  padding: 1.125rem 1.5rem;
+  display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.acciones-formulario {
-  margin-top: 20px;
-  flex-wrap: wrap;
+.modal-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-button {
-  border: 0;
-  border-radius: 7px;
-  padding: 10px 14px;
-  background: #245da8;
-  color: white;
-  font: inherit;
-  font-weight: bold;
+.close-modal {
+  background: none;
+  border: none;
+  color: var(--slate-300);
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.close-modal:hover {
+  color: var(--white);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.file-input-group {
+  margin-bottom: 1rem;
+}
+
+.file-input-group label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--slate-700);
+  margin-bottom: 0.35rem;
+}
+
+.file-input-group input[type="file"] {
+  width: 100%;
+  font-size: 0.8125rem;
+  padding: 0.45rem;
+  border: 1px dashed var(--slate-300);
+  border-radius: 6px;
+  background-color: var(--slate-50);
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  background-color: var(--slate-50);
+  border-top: 1px solid var(--slate-200);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.btn-secondary {
+  background: var(--white);
+  border: 1px solid var(--slate-300);
+  color: var(--slate-700);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
   cursor: pointer;
 }
 
-button:hover {
-  filter: brightness(0.92);
-}
-
-button:disabled {
-  opacity: 0.6;
-  cursor: wait;
-}
-button.secundario {
-  background: #e8edf5;
-  color: #243047;
-}
-
-button.eliminar {
-  background: #b83232;
-}
-
-.encabezado-lista {
-  margin-bottom: 18px;
-  flex-wrap: wrap;
-}
-
-.encabezado-lista p {
-  margin: 0;
-  color: #64748b;
-  font-size: 14px;
-}
-
-.lista-productos {
-  display: grid;
-  gap: 14px;
-}
-
-.producto {
-  border: 1px solid #e0e5ed;
-  border-radius: 9px;
-  padding: 16px;
-  overflow-wrap: anywhere;
-}
-
-.producto h3 {
-  margin: 0 0 8px;
-}
-
-.producto p {
-  margin: 5px 0;
-}
-
-.precio {
-  font-size: 20px;
-  font-weight: bold;
-  color: #245da8;
-}
-
-.acciones-producto {
-  justify-content: flex-start;
-  margin-top: 14px;
-  flex-wrap: wrap;
-}
-
-.mensaje {
-  margin: 12px 0;
-  font-size: 14px;
-}
-
-.mensaje:empty {
+/* ==========================================================================
+   ANIMACIÓN DE CARGA (SPINNER)
+   ========================================================================== */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
   display: none;
 }
 
-.mensaje.exito {
-  color: #16794b;
+.btn-primary.loading .spinner {
+  display: inline-block;
 }
 
-.mensaje.error {
-  color: #b42318;
+.btn-primary.loading .btn-text {
+  display: none;
 }
 
-.pie {
-  text-align: center;
-  padding: 18px;
-  color: #64748b;
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-@media (max-width: 760px) {
-  .contenido {
-    grid-template-columns: 1fr;
+/* ==========================================================================
+   DISEÑO RESPONSIVO (MÓVILES Y TABLETS)
+   ========================================================================== */
+@media (max-width: 960px) {
+  .login-container {
+    flex-direction: column;
   }
-}
 
-@media (max-width: 400px) {
-  .campos-dobles {
-    grid-template-columns: 1fr;
+  .brand-panel {
+    padding: 2.25rem 1.75rem;
+  }
+
+  .brand-headline {
+    font-size: 1.5rem;
+  }
+
+  .feature-list {
+    display: none;
+  }
+
+  .form-panel {
+    padding: 2.5rem 1.5rem;
   }
 }

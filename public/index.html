@@ -3,88 +3,317 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>tienda_web | Productos</title>
+  <title>Portal de Licitaciones y Contrataciones Públicas | Acceso</title>
+  <!-- Tipografía Institucional -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Hoja de estilos externa -->
   <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
 </head>
 <body>
-  <header class="encabezado">
-    <div class="contenedor">
-      <h1>tienda_web</h1>
-      <p>Administración de productos</p>
-    </div>
-  </header>
 
-  <main class="contenedor contenido">
-+    <section class="panel">
-      <h2 id="titulo-formulario">Registrar producto</h2>
-
-      <div id="mensaje" class="mensaje" role="status"
-           aria-live="polite"></div>
-
-      <form id="form-producto">
-        <input type="hidden" id="producto-id">
-
-        <label for="nombre">Nombre del producto</label>
-        <input type="text" id="nombre" maxlength="100"
-               required placeholder="Ej. Teclado mecánico">
-
-        <label for="descripcion">Descripción</label>
-        <textarea id="descripcion" maxlength="500"
-                  placeholder="Descripción del producto"></textarea>
-
-        <div class="campos-dobles">
-          <div>
-            <label for="precio">Precio</label>
-            <input type="number" id="precio" min="0"
-                   step="0.01" required>
+  <main class="login-container">
+    <!-- PANEL IZQUIERDO: IDENTIDAD INSTITUCIONAL -->
+    <section class="brand-panel" aria-label="Información institucional">
+      <div class="brand-header">
+        <div class="logo-wrapper">
+          <div class="logo-icon">
+            <!-- Escudo / Edificio Institucional SVG -->
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18"></path>
+              <path d="M5 21V7l7-4 7 4v14"></path>
+              <path d="M9 21v-6h6v6"></path>
+              <path d="M9 9h.01"></path>
+              <path d="M15 9h.01"></path>
+              <path d="M9 13h.01"></path>
+              <path d="M15 13h.01"></path>
+            </svg>
           </div>
-
-          <div>
-            <label for="stock">Stock</label>
-            <input type="number" id="stock" min="0"
-                   step="1" required>
+          <div class="logo-text">
+            <h1>Sistema Electrónico de<br>Contrataciones Públicas</h1>
+            <span>Dirección General de Adquisiciones</span>
           </div>
         </div>
 
-        <label for="categoria">Categoría</label>
-        <input type="text" id="categoria" maxlength="80"
-               placeholder="Ej. Periféricos">
+        <h2 class="brand-headline">Transparencia, legalidad y eficiencia en compras públicas.</h2>
+        <p class="brand-description">
+          Plataforma oficial para la consulta de convocatorias, presentación de proposiciones técnicas y económicas, y seguimiento de fallos en tiempo real.
+        </p>
 
-        <div class="acciones-formulario">
-          <button type="submit" id="btn-guardar">
-            Guardar producto
-          </button>
-
-          <button type="button" id="btn-cancelar"
-                  class="secundario" hidden>
-            Cancelar edición
-          </button>
-        </div>
-      </form>
-    </section>
-
-    <section class="panel">
-      <div class="encabezado-lista">
-        <div>
-          <h2>Productos registrados</h2>
-          <p id="total-productos">Cargando productos...</p>
-        </div>
-
-        <button type="button" id="btn-recargar"
-                class="secundario">
-          Recargar
-        </button>
+        <ul class="feature-list">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span><strong>Integridad Criptográfica:</strong> Resguardo cifrado de propuestas hasta la fecha de apertura oficial.</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span><strong>Trazabilidad Auditada:</strong> Registro cronológico con sello de tiempo certificado para cada actuación.</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span><strong>Normatividad Vigente:</strong> Cumplimiento estricto con la Ley de Adquisiciones, Arrendamientos y Servicios.</span>
+          </li>
+        </ul>
       </div>
 
-      <div id="lista-productos" class="lista-productos">
-        <p>Cargando información...</p>
+      <div class="brand-footer">
+        <div class="security-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Conexión Segura TLS 1.3 · ISO/IEC 27001</span>
+        </div>
+        <p style="margin-top: 0.75rem;">© 2026 Portal Oficial de Licitaciones. Todos los derechos reservados.</p>
+      </div>
+    </section>
+
+    <!-- PANEL DERECHO: FORMULARIO DE ACCESO -->
+    <section class="form-panel">
+      <div class="form-wrapper">
+        <div class="form-header">
+          <span class="badge-official">Acceso a Licitantes y Dependencias</span>
+          <h2>Iniciar Sesión</h2>
+          <p>Ingrese sus credenciales registradas en el Padrón Único de Proveedores.</p>
+        </div>
+
+        <!-- Alerta de Validación / Feedback -->
+        <div id="alertBox" class="alert-box" role="alert">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span id="alertMessage"></span>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <!-- Campo Usuario / RFC -->
+          <div class="form-group">
+            <label for="username" class="form-label">RFC, Correo Electrónico o Usuario</label>
+            <div class="input-wrapper">
+              <span class="input-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <input 
+                type="text" 
+                id="username" 
+                name="username" 
+                class="form-control" 
+                placeholder="Ej. XAXX010101000 o correo@empresa.com" 
+                autocomplete="username"
+                required
+              >
+            </div>
+            <div id="usernameError" class="field-error">Por favor, ingrese un RFC, correo o usuario válido.</div>
+          </div>
+
+          <!-- Campo Contraseña -->
+          <div class="form-group">
+            <label for="password" class="form-label">Contraseña</label>
+            <div class="input-wrapper">
+              <span class="input-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                class="form-control" 
+                placeholder="••••••••••••" 
+                autocomplete="current-password"
+                required
+              >
+              <button type="button" id="togglePassword" class="toggle-password" aria-label="Mostrar contraseña" title="Mostrar contraseña">
+                <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div id="passwordError" class="field-error">La contraseña debe contener al menos 8 caracteres.</div>
+          </div>
+
+          <!-- Opciones adicionales -->
+          <div class="form-options">
+            <label class="checkbox-label">
+              <input type="checkbox" id="rememberMe" name="rememberMe">
+              <span>Mantener sesión activa</span>
+            </label>
+            <a href="#recuperar" class="forgot-link" id="forgotLink">¿Olvidó su contraseña?</a>
+          </div>
+
+          <!-- Botón Principal -->
+          <button type="submit" id="submitBtn" class="btn btn-primary">
+            <span class="spinner"></span>
+            <span class="btn-text">Iniciar Sesión</span>
+          </button>
+        </form>
+
+        <div class="divider">o acceder mediante firma electrónica</div>
+
+        <!-- Botón e.firma -->
+        <button type="button" id="efirmaBtn" class="btn btn-efirma">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F2942" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12h6"/>
+            <path d="M12 9v6"/>
+          </svg>
+          <span>Ingresar con e.firma (FIEL)</span>
+        </button>
+
+        <!-- Registro y Pie de Página -->
+        <div class="register-prompt">
+          ¿Aún no forma parte del padrón? <a href="#registro">Registrar nueva empresa licitante</a>
+        </div>
+
+        <footer class="form-footer">
+          <div class="support-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Mesa de Ayuda: <strong>800-000-LICITA (5424)</strong> · Lun a Vie 08:00 - 19:00 hrs</span>
+          </div>
+          <nav class="footer-links" aria-label="Enlaces legales y soporte">
+            <a href="#aviso-privacidad">Aviso de Privacidad</a>
+            <a href="#terminos">Términos de Uso</a>
+            <a href="#normatividad">Marco Normativo</a>
+            <a href="#guia-licitante">Guía del Licitante</a>
+          </nav>
+        </footer>
       </div>
     </section>
   </main>
 
-  <footer class="pie">
-    <p>Proyecto académico de Desarrollo Web II</p>
-  </footer>
+  <!-- MODAL DE AUTENTICACIÓN CON e.firma -->
+  <div id="efirmaModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">Autenticación con e.firma (SAT)</h3>
+        <button type="button" class="close-modal" id="closeModal" aria-label="Cerrar ventana">&times;</button>
+      </div>
+      <form id="efirmaForm">
+        <div class="modal-body">
+          <div class="file-input-group">
+            <label for="cerFile">Certificado (.cer)</label>
+            <input type="file" id="cerFile" accept=".cer" required>
+          </div>
+          <div class="file-input-group">
+            <label for="keyFile">Clave Privada (.key)</label>
+            <input type="file" id="keyFile" accept=".key" required>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="efirmaPass" class="form-label">Contraseña de clave privada</label>
+            <input type="password" id="efirmaPass" class="form-control" style="padding-left: 0.875rem;" placeholder="Ingrese contraseña de su FIEL" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="cancelModal">Cancelar</button>
+          <button type="submit" class="btn btn-primary" style="width: auto; padding: 0.6rem 1.25rem;">Validar Certificado</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lógica de validación e interacción -->
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const togglePasswordBtn = document.getElementById('togglePassword');
+    const eyeIcon = document.getElementById('eyeIcon');
+    const submitBtn = document.getElementById('submitBtn');
+    const alertBox = document.getElementById('alertBox');
+    const alertMessage = document.getElementById('alertMessage');
+    const usernameError = document.getElementById('usernameError');
+    const passwordError = document.getElementById('passwordError');
+
+    togglePasswordBtn.addEventListener('click', () => {
+      const isPassword = passwordInput.type === 'password';
+      passwordInput.type = isPassword ? 'text' : 'password';
+      togglePasswordBtn.setAttribute('aria-label', isPassword ? 'Ocultar contraseña' : 'Mostrar contraseña');
+      
+      eyeIcon.innerHTML = isPassword
+        ? '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
+        : '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    });
+
+    function showAlert(message, type = 'error') {
+      alertBox.className = `alert-box ${type}`;
+      alertMessage.textContent = message;
+      alertBox.style.display = 'flex';
+    }
+
+    function hideAlert() {
+      alertBox.style.display = 'none';
+    }
+
+    usernameInput.addEventListener('input', () => {
+      usernameInput.classList.remove('is-invalid');
+      usernameError.style.display = 'none';
+      hideAlert();
+    });
+
+    passwordInput.addEventListener('input', () => {
+      passwordInput.classList.remove('is-invalid');
+      passwordError.style.display = 'none';
+      hideAlert();
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      hideAlert();
+      let isValid = true;
+
+      const userVal = usernameInput.value.trim();
+      const passVal = passwordInput.value;
+
+      if (userVal.length < 4) {
+        usernameInput.classList.add('is-invalid');
+        usernameError.style.display = 'block';
+        isValid = false;
+      }
+
+      if (passVal.length < 8) {
+        passwordInput.classList.add('is-invalid');
+        passwordError.style.display = 'block';
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        showAlert('Credenciales verificadas. Redirigiendo al tablero de licitaciones...', 'success');
+      }, 1200);
+    });
+
+    const efirmaBtn = document.getElementById('efirmaBtn');
+    const efirmaModal = document.getElementById('efirmaModal');
+    const closeModal = document.getElementById('closeModal');
+    const cancelModal = document.getElementById('cancelModal');
+    const efirmaForm = document.getElementById('efirmaForm');
+
+    const openEfirmaModal = () => {
+      efirmaModal.classList.add('active');
+    };
+
+    const closeEfirmaModal = () => {
+      efirmaModal.classList.remove('active');
+      efirmaForm.reset();
+    };
+
+    efirmaBtn.addEventListener('click', openEfirmaModal);
+    closeModal.addEventListener('click', closeEfirmaModal);
+    cancelModal.addEventListener('click', closeEfirmaModal);
+
+    efirmaModal.addEventListener('click', (e) => {
+      if (e.target === efirmaModal) closeEfirmaModal();
+    });
+
+    efirmaForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      closeEfirmaModal();
+      showAlert('Certificado digital validado correctamente. Iniciando sesión segura...', 'success');
+    });
+
+    document.getElementById('forgotLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      showAlert('Se ha habilitado el protocolo de recuperación. Ingrese su RFC registrado y contacte a su administrador si requiere reinicio de token.', 'success');
+    });
+  </script>
 </body>
 </html>
