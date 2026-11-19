@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tienda_web | Productos</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="encabezado">
+    <div class="contenedor">
+      <h1>tienda_web</h1>
+      <p>Administración de productos</p>
+    </div>
+  </header>
+
+  <main class="contenedor contenido">
++    <section class="panel">
+      <h2 id="titulo-formulario">Registrar producto</h2>
+
+      <div id="mensaje" class="mensaje" role="status"
+           aria-live="polite"></div>
+
+      <form id="form-producto">
+        <input type="hidden" id="producto-id">
+
+        <label for="nombre">Nombre del producto</label>
+        <input type="text" id="nombre" maxlength="100"
+               required placeholder="Ej. Teclado mecánico">
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" maxlength="500"
+                  placeholder="Descripción del producto"></textarea>
+
+        <div class="campos-dobles">
+          <div>
+            <label for="precio">Precio</label>
+            <input type="number" id="precio" min="0"
+                   step="0.01" required>
+          </div>
+
+          <div>
+            <label for="stock">Stock</label>
+            <input type="number" id="stock" min="0"
+                   step="1" required>
+          </div>
+        </div>
+
+        <label for="categoria">Categoría</label>
+        <input type="text" id="categoria" maxlength="80"
+               placeholder="Ej. Periféricos">
+
+        <div class="acciones-formulario">
+          <button type="submit" id="btn-guardar">
+            Guardar producto
+          </button>
+
+          <button type="button" id="btn-cancelar"
+                  class="secundario" hidden>
+            Cancelar edición
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="encabezado-lista">
+        <div>
+          <h2>Productos registrados</h2>
+          <p id="total-productos">Cargando productos...</p>
+        </div>
+
+        <button type="button" id="btn-recargar"
+                class="secundario">
+          Recargar
+        </button>
+      </div>
+
+      <div id="lista-productos" class="lista-productos">
+        <p>Cargando información...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>Proyecto académico de Desarrollo Web II</p>
+  </footer>
+</body>
+</html>
